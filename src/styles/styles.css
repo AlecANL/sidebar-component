@@ -1,0 +1,133 @@
+:root {
+  --baseFontFamily: 'Manrope', sans-serif;
+  --just-blue: rgba(15, 86, 179, 1);
+  --just-black: #000;
+  --just-white: #fff;
+  --soft-white: rgba(251, 251, 251, 1);
+  --bgHover: rgba(197, 220, 250, 1);
+  --fontColor: rgba(120, 120, 120, 1);
+  --currentWidthSidebar: 4rem;
+  --subHeaderFont: 800 0.625rem/0.9375rem var(--baseFontFamily);
+}
+
+body {
+  font-family: var(--baseFontFamily);
+  margin: 0;
+  background-color: var(--just-blue);
+}
+
+.sidebar {
+  inline-size: var(--currentWidthSidebar);
+  min-block-size: 100vh;
+  background-color: var(--just-white);
+  transition: inline-size 0.5s ease-in;
+  overflow: hidden;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-header {
+  padding-block-start: 0.625rem;
+  padding-block-end: 0.625rem;
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-inline-start: 0.5rem;
+  margin-inline-end: 8px;
+  border-start-end-radius: 12px;
+  border-end-end-radius: 12px;
+  background-color: unset;
+  transition: background-color 0.5s ease-in-out;
+  color: var(--fontColor);
+}
+.sidebar-item span,
+.sidebar-title span {
+  padding: 0.75rem;
+  font-weight: bold;
+}
+
+.sidebar-item svg,
+.sidebar-title svg {
+  padding: 0.75rem;
+  flex-shrink: 0;
+}
+.sidebar svg path {
+  stroke: var(--fontColor);
+}
+
+.sidebar-title img,
+.sidebar-item span,
+.sidebar-title span {
+  display: none;
+  visibility: hidden;
+}
+.sidebar-title {
+  display: flex;
+  padding-inline-start: 0.5rem;
+}
+.sidebar-title svg {
+  cursor: pointer;
+}
+
+.sidebar.is-active .sidebar-item span,
+.sidebar.is-active .sidebar-title img,
+.sidebar.is-active .sidebar-title span {
+  display: block;
+  animation-name: showText;
+  animation-duration: 0.1s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.sidebar.is-active .sidebar-item img {
+  display: block;
+}
+.sidebar.is-active {
+  --currentWidthSidebar: 15.5rem;
+}
+
+.sidebar-item:hover {
+  background-color: var(--bgHover);
+}
+.sidebar-item.is-active,
+.sidebar-item.is-active svg path,
+.sidebar-item.is-active span {
+  background-color: var(--bgHover);
+  color: var(--just-blue);
+  stroke: var(--just-blue);
+}
+.sidebar-item:hover svg path,
+.sidebar-item:hover span {
+  stroke: var(--just-blue);
+  color: var(--just-blue);
+}
+.sub-heading {
+  font: var(--subHeaderFont);
+  color: var(--just-black);
+  text-transform: uppercase;
+}
+
+/* svg,
+span {
+  position: relative;
+  z-index: 100000;
+} */
+
+@keyframes showText {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
